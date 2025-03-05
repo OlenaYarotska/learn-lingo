@@ -27,14 +27,14 @@
 
 .icon {
     position: absolute;
-    fill: #FBE9BA;
     height: 20px;
     width: 20px;
     top: 0;
     right: 60px;
+    color: var(--accent-color);
+}
+.icon:hover {
+    color: var(--button-accent);
 }
 
-.icon:hover {
-    fill: #F4C550;
-}
 

@@ -32,6 +32,7 @@ export default function UserMenu({ user }) {
                 <svg className={css.icon}>
                     <use xlinkHref={`${sprite}#${"icon-logout-icon"}`} />
                 </svg>
+                
             </button>
         </div>
     )

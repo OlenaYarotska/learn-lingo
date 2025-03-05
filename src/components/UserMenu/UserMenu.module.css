@@ -17,4 +17,8 @@
 .icon{
     height: 25px;
     width: 25px;
+    fill: var(--accent-color);
+}
+.icon:hover{
+    fill: var(--button-accent);
 }
