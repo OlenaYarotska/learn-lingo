@@ -1,7 +1,7 @@
 import Navigation from "../Navigation/Navigation";
+import AppBar from "../AppBar/AppBar";
 import sprite from '../../images/sprite/icons.svg';
 import css from './Header.module.css';
-import AppBar from "../AppBar/AppBar";
 
 
 export default function Header() {

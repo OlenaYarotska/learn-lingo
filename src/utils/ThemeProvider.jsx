@@ -29,31 +29,4 @@ export default function ThemeProvider({ children }) {
 
 export function useTheme() {
     return useContext(ThemeContext);
-}
-
-
-// const ThemeContext = createContext();
-
-// export default function ThemeProvider({ children }) {
-//     const savedTheme = localStorage.getItem("themeIndex");
-//      const [themeIndex, setThemeIndex] = useState(savedTheme ? Number(savedTheme) : 0);
-    
-//     useEffect(() => {
-//         localStorage.setItem("themeIndex", themeIndex)
-//     }, [themeIndex]);
-
-
-//     const handleThemeChange = () => {
-//         setThemeIndex((prev) => (prev + 1) % themes.length);
-//     };
-
-//     return (
-//         <ThemeContext.Provider value={{theme: themes[themeIndex], handleThemeChange}}>
-//             {children}
-//         </ThemeContext.Provider>
-//     )  
-// };
-
-// export function useTheme() {
-//     return useContext(ThemeContext);
-// }
+};

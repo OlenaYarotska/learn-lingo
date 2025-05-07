@@ -1,10 +1,11 @@
-import * as Yup from "yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signUp } from "../../services/api";
-import css from './RegistrationForm.module.css';
+import { registerUser } from "../../redux/auth/operations";
 import sprite from '../../images/sprite/icons.svg';
+import css from './RegistrationForm.module.css';
 
  const FeedbackSchema = Yup.object().shape({
         name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Name cannot be empty!"),
@@ -14,16 +15,12 @@ import sprite from '../../images/sprite/icons.svg';
     
 export default function RegistrationForm() {
     const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(FeedbackSchema) });
+    const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
-    const onSubmit = async (data) => {
-        try {
-            await signUp(data.email, data.password, data.name);    
-        }
-        catch (error) {
-            console.error(error.message)
-        }
-    };
 
+    const onSubmit = (data) => {
+        dispatch(registerUser(data))
+    };
 
     return (
          <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
@@ -48,7 +45,7 @@ export default function RegistrationForm() {
             </label>
             {errors.password && <span className={css.error}>{errors.password.message}</span>}
             
-         <button type="submit" className={css.button}>Sign Up</button>     
-    </form>
+            <button type="submit" className={css.button}>Sign Up</button>     
+        </form>
     )
 }

@@ -1,10 +1,11 @@
-import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { logIn } from "../../services/api";
-import css from './LoginForm.module.css';
+import { logInUser } from "../../redux/auth/operations";
 import sprite from '../../images/sprite/icons.svg';
+import css from './LoginForm.module.css';
 
  const FeedbackSchema = Yup.object().shape({
         email: Yup.string().min(5, "Too Short").max(50, "Too Long!").email("Invalid email format").required("Email cannot be empty!"),
@@ -13,14 +14,11 @@ import sprite from '../../images/sprite/icons.svg';
     
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(FeedbackSchema) });
+    const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
-    const onSubmit = async (data) => {
-        try {   
-            await logIn(data.email, data.password);
-        }
-        catch (error) {
-            console.error(error.message)
-        }
+
+    const onSubmit = (data) => {
+        dispatch(logInUser(data));
     };
 
 
@@ -43,8 +41,7 @@ export default function LoginForm() {
             </label>
             {errors.password && <span className={css.error}>{errors.password.message}</span>}
             
-         <button type="submit" className={css.button}>Log In</button>     
-    </form>
+            <button type="submit" className={css.button}>Log In</button>     
+        </form>
     )
-
-}
+};

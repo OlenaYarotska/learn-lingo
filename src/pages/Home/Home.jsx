@@ -1,7 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../utils/ThemeProvider";
-import { useNavigate} from "react-router-dom";
-import css from './Home.module.css';
 import sprite from '../../images/sprite/icons.svg';
+import css from './Home.module.css';
 
 
 export default function Home() {

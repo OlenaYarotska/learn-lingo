@@ -1,16 +1,15 @@
 .form{
     display: flex;
     flex-direction: column;
-    max-width: 438px;
+    gap: 18px;
 }
 .input {
-    width: 100%;
+    width: 438px;
     padding: 16px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 12px;
     box-sizing: border-box;
-    margin-bottom: 18px;
     position: relative;
 }
 .input::placeholder {
@@ -22,11 +21,13 @@
     font-size: 18px;
     line-height: 28px;
     font-weight: 700;
+    width: 438px;
     background-color: #FBE9BA;
     padding-top: 16px;
     padding-bottom: 16px;
     border: none;
     border-radius: 12px;
+    margin-top: 22px;
 }
 .button:hover {
     background-color: #F4C550;
@@ -36,7 +37,7 @@
     height: 20px;
     width: 20px;
     right: 80px;
-    bottom: 160px;
+    bottom: 180px;
     cursor: pointer;
 }
 .error {

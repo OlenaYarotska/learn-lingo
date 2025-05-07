@@ -1,7 +1,9 @@
+.wrapper {
+    padding: 0px 64px;
+}
 .heroWrapper{
     display: flex;
     justify-content: space-between;
-
 }
  .themeBtn {
     border: none;
@@ -15,10 +17,10 @@
     position: absolute;
     top: 30px;
     left: 30px;
-    &&:hover{
-fill: var(--button-accent);
+    &&:hover {
+        fill: var(--button-accent);
     }
-    }
+}
      
 .iconPoint {
     height: 25px;
@@ -29,8 +31,8 @@ fill: var(--button-accent);
     left: 55px;
     animation: heartbeat 1s infinite;
     &&:hover {
-            fill: var(--button-accent);
-        }
+        fill: var(--button-accent);
+    }
 }
 
 @keyframes heartbeat {
@@ -50,7 +52,7 @@ fill: var(--button-accent);
 .textContainer {
     box-sizing: border-box;
    background-color: #F8F8F8;
-   max-width: 720px;
+   width: 720px;
    height: 530px;
    border-radius: 30px; 
    padding-top: 98px;
@@ -102,16 +104,14 @@ fill: var(--button-accent);
     border-radius: 30px;
     background-image: var(--background-image);
 }
-
 .statsContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: stretch;
     margin-top: 24px;
-    padding: 40px 128px;
     position: relative;
-    padding: 40px 128px;
+    padding: 40px 122px;
     border-radius: 30px;
 }
 

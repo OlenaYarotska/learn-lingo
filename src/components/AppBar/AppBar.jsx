@@ -1,29 +1,22 @@
-import { useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../services/firebase";
+import {  useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { checkAuthState } from "../../redux/auth/operations";
 import UserMenu from "../UserMenu/UserMenu";
 import AuthNav from "../AuthNav/AuthNav";
 
-export default function AppBar() {
 
-     const [user, setUser] = useState(null);
+export default function AppBar() {
+    const dispatch = useDispatch();
+    const isLoggedIn = useSelector(selectIsLoggedIn);
 
     useEffect(() => {
-    const logOff = onAuthStateChanged(auth, async (currentUser) => {
-        if (currentUser) {
-            await currentUser.reload(); 
-            setUser(auth.currentUser);  
-        } else {
-            setUser(null);
-        }
-    });
-
-    return () => logOff();
-}, []);
+        dispatch(checkAuthState())
+    }, [dispatch]);
     
     return (
         <div>
-            {user ? <UserMenu user={user} /> : <AuthNav/>}
+            {isLoggedIn ? <UserMenu /> : <AuthNav/>}
         </div>
     )
 }
